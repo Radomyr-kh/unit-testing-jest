@@ -10,10 +10,10 @@ class Info extends Component {
   async componentDidMount() {
     getGitHubUser(this.props.user)
       .then((response) => {
-        this.setState(response.data); //!
+        this.setState(response.data);
       })
       .catch((error) => {
-        this.setState({error: 'request error'}); //!
+        this.setState({error: 'request error'});
       });
   }
 
@@ -24,7 +24,7 @@ class Info extends Component {
         <ul>
           {Object.keys(this.state).map((i) => (
             <li key={i}>
-              {i}: {this.state[i]} //!
+              {i}: {this.state[i]}
             </li>
           ))}
         </ul>
