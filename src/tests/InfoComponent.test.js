@@ -1,9 +1,3 @@
-// describe('just fake tests for Info Component', () => {
-//   it('1st fake test of Info Component', () => {
-//     expect(true).toEqual(true);
-//   });
-// });
-
 // TODO: Your test need to be here instead of fake tests
 import Info from '../components/Info/index';
 import renderer from 'react-test-renderer';
