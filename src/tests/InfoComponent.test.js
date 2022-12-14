@@ -1,9 +1,3 @@
-// TODO: Your test need to be here instead of fake tests
-<<<<<<< HEAD
-import Info from '../components/Info/index';
-import renderer from 'react-test-renderer';
-=======
-
 import getGitHubUser from '../services/DataService/index';
 import Info from '../components/Info/index';
 import renderer from 'react-test-renderer';
@@ -78,63 +72,3 @@ describe('InfoComponent tests', () => {
     expect(res.data).toEqual(list);
   });
 });
-
-//   it('InfoComponent RENDERS all items from mock data correctly', async () => {
-//     mockAxios.get.mockImplementationOnce(() =>
-//       Promise.resolve({
-//         data: {
-//           login: 'bob',
-//           id: '12345',
-//           followers: '43',
-//         },
-//       })
-//     );
-//     const res = await getGitHubUser();
-
-//     // copy of what we receive from "API" call
-//     const list = {
-//       login: 'bob',
-//       id: '12345',
-//       followers: '43',
-//     };
-
-//     const testInstance = renderer.create(<Info state={res} />).root;
-//     const COMPONENT_LIST = testInstance.findAllByType('li');
-
-//     const testList = Object.keys(list).map((i) => (
-//       <li key={i}>
-//         {i}: {list[i]}
-//       </li>
-//     ));
-//     // async () => expect(await COMPONENT_LIST).toEqual(testList);
-//     // async () => expect(await COMPONENT_LIST).toEqual('testList');
-//     console.log(COMPONENT_LIST);
-//     // async () => expect(await res).toBe(list);
-//   });
-// });
-
-// expect(COMPONENT_LIST).toEqual(testList);
->>>>>>> task1radomyr
-
-// const wrapper = renderer.create(<Info state={res} />).root;
-// const element = wrapper.findAllByType('li');
-// expect(element).toEqual(testList);
-
-// expect(wrapper.toJSON()).toMatchSnapshot();
-// });
-
-// // !something interesting
-// xit('State testing', () => {
-//   const list = {
-//     login: 'bob',
-//     id: '12345',
-//     followers: '43',
-//   };
-
-//   // const testInstance = renderer.create(<Info state={list} />).getInstance();
-//   // !enzyme
-//   const wrapper = mount(<Info />);
-//   wrapper.setState(list);
-//   expect(wrapper.state).toEqual(list);
-// });
-// });
