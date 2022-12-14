@@ -1,20 +1,9 @@
 // TODO: Your test need to be here instead of fake tests
-import {Component} from 'react';
-import getGitHubUser from '../services/DataService/index';
 
+import getGitHubUser from '../services/DataService/index';
 import Info from '../components/Info/index';
 import renderer from 'react-test-renderer';
-// import ShallowRenderer from 'react-test-renderer/shallow';
 import mockAxios from 'axios';
-
-// import {mount} from 'enzyme';
-// import Adapter from '@cfaester/enzyme-adapter-react-18';
-// import {shallow, configure} from 'enzyme';
-
-// configure({adapter: new Adapter()});
-// import Adapter from 'enzyme-adapter-react-16';
-
-// TODO: Your test need to be here instead of fake tests
 
 //! для Info:
 //! 1) чи рендериться статична інформація
@@ -30,12 +19,12 @@ describe('InfoComponent tests', () => {
   it('renders correctly', () => {
     const wrapper = renderer.create(<Info />);
     const testInstance = wrapper.root;
-    expect(testInstance.findByProps()).toBeTruthy();
-    // expect(wrapper.toJSON()).toMatchSnapshot();
+    // expect(testInstance.findByProps()).toBeTruthy();
+    expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
   // !чи рендериться статична інформація
-  it('h3 = "GitHub User Info"', () => {
+  it('renders h3 = "GitHub User Info"', () => {
     const wrapper = renderer.create(<Info />);
     const instance = wrapper.root;
     const element = instance.findByType('h3');
@@ -47,17 +36,17 @@ describe('InfoComponent tests', () => {
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({
         data: {
-          login: 'radomyr',
+          login: 'bob',
           id: '12345',
           followers: '43',
         },
       })
     );
     const res = await getGitHubUser();
-    expect(res.data.login).toContain('radomyr');
+    expect(res.data.login).toContain('bob');
   });
 
-  // ! data contaoins mock data object
+  // ! data contains mock data object
   // just static test
   // it('render corectly', () => {
   //   const wrapper = renderer.create(<Info user='yurkovskiy' />).root;
@@ -85,38 +74,40 @@ describe('InfoComponent tests', () => {
     expect(res.data).toEqual(list);
   });
 });
-// // !NOT WORkING
-// it('InfoComponent RENDERS all items from mock data correctly', async () => {
-//   mockAxios.get.mockImplementationOnce(() =>
-//     Promise.resolve({
-//       data: {
-//         login: 'radomyr',
-//         id: '12345',
-//         followers: '43',
-//       },
-//     })
-//   );
-//   const res = await getGitHubUser();
 
-//   // copy of what we receive from "API" call
-//   const list = {
-//     login: 'radomyr',
-//     id: '12345',
-//     followers: '43',
-//   };
+//   it('InfoComponent RENDERS all items from mock data correctly', async () => {
+//     mockAxios.get.mockImplementationOnce(() =>
+//       Promise.resolve({
+//         data: {
+//           login: 'bob',
+//           id: '12345',
+//           followers: '43',
+//         },
+//       })
+//     );
+//     const res = await getGitHubUser();
 
-//   // const testInstance = renderer.create(<Info />).root;
-//   const testInstance = renderer.create(<Info state={res} />);
-//   // testInstance.setState(res);
-//   const COMPONENT_LIST = testInstance.findAllByType('li');
+//     // copy of what we receive from "API" call
+//     const list = {
+//       login: 'bob',
+//       id: '12345',
+//       followers: '43',
+//     };
 
-//   const testList = Object.keys(list).map((i) => (
-//     <li key={i}>
-//       {i}: {list[i]}
-//     </li>
-//   ));
+//     const testInstance = renderer.create(<Info state={res} />).root;
+//     const COMPONENT_LIST = testInstance.findAllByType('li');
 
-//   expect(COMPONENT_LIST).toEqual(testList);
+//     const testList = Object.keys(list).map((i) => (
+//       <li key={i}>
+//         {i}: {list[i]}
+//       </li>
+//     ));
+//     // async () => expect(await COMPONENT_LIST).toEqual(testList);
+//     // async () => expect(await COMPONENT_LIST).toEqual('testList');
+//     console.log(COMPONENT_LIST);
+//     // async () => expect(await res).toBe(list);
+//   });
+// });
 
 // expect(COMPONENT_LIST).toEqual(testList);
 
@@ -130,7 +121,7 @@ describe('InfoComponent tests', () => {
 // // !something interesting
 // xit('State testing', () => {
 //   const list = {
-//     login: 'radomyr',
+//     login: 'bob',
 //     id: '12345',
 //     followers: '43',
 //   };
