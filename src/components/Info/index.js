@@ -11,6 +11,8 @@ class Info extends Component {
     getGitHubUser(this.props.user)
       .then((response) => {
         this.setState(response.data);
+        // console.log(response);
+        // console.log('state = ', this.state);
       })
       .catch((error) => {
         this.setState({error: 'request error'});
