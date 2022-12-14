@@ -1,8 +1,7 @@
-import { Component } from "react";
-import getGitHubUser from "../../services/DataService";
+import {Component} from 'react';
+import getGitHubUser from '../../services/DataService';
 
 class Info extends Component {
-
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,7 +13,7 @@ class Info extends Component {
         this.setState(response.data);
       })
       .catch((error) => {
-        this.setState({ error: "request error" });
+        this.setState({error: 'request error'});
       });
   }
 
