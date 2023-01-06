@@ -1,4 +1,4 @@
-# Testing React application with Jest
+# Task. Jest Framework
 
 # Application
 - The application is very simple which consist of only two components: **App** component, **Info** component and one service module named **DataService**
@@ -23,7 +23,3 @@ Code coverage is calculating by Jest framework and should be at least **90%**
 
 ### Mocking
 - As a continuation of previous part :), for example, during testing **DataService** module the 3rd pary library (**axios**) should be mocked!!
-
-**~~Have a nice coding games :)~~**
-
-*I hope this little task will help you to understand some basics of unit testing and not only*
