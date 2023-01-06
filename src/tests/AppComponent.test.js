@@ -1,12 +1,19 @@
-// TODO: Your test need to be here instead of fake tests
-
 import App from '../components/App/index';
 import renderer from 'react-test-renderer';
 
-describe('App Component tests', () => {
-  // Test: render
+describe('Tests for App Component', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = renderer.create(<App />);
+  });
+
   it('renders correctly', () => {
-    const wrapper = renderer.create(<App />);
     expect(wrapper.toJSON()).toMatchSnapshot();
+  });
+
+  it("renders H1 element with 'Hello World' ", () => {
+    const root = wrapper.root;
+    expect(root.findByType('h1')).toBeTruthy();
   });
 });

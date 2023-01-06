@@ -1,5 +1,4 @@
-# React Online Marathon (Sprint 16)
-Testing JS Applications (React Applications)
+# React Testing Library
 
 # Application
 - The application is very simple which consist of only two components: **App** component, **Info** component and one service module named **DataService**

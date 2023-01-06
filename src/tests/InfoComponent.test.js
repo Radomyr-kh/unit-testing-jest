@@ -3,56 +3,41 @@ import Info from '../components/Info/index';
 import renderer from 'react-test-renderer';
 import mockAxios from 'axios';
 
-//! для Info:
-//! 1) чи рендериться статична інформація
-//! 2) чи рендериться те, що видає мок сервіса
+describe('Tests for Info Component', () => {
+  let wrapper;
+  let userName;
 
-describe('InfoComponent tests', () => {
-  // Test: new Info class is an instance of Info
-  it('New InfoComponent should be the instance of InfoComponent', () => {
+  beforeEach(() => {
+    userName = 'some-name';
+    wrapper = renderer.create(<Info user={userName} />);
+  });
+
+  it('New InfoComponent should be an instance of InfoComponent', () => {
     expect(new Info()).toBeInstanceOf(Info);
   });
 
-  // Test: render
   it('renders correctly', () => {
-    const wrapper = renderer.create(<Info />);
-    const testInstance = wrapper.root;
-    // expect(testInstance.findByProps()).toBeTruthy();
     expect(wrapper.toJSON()).toMatchSnapshot();
   });
 
-  // !чи рендериться статична інформація
   it('renders h3 = "GitHub User Info"', () => {
-    const wrapper = renderer.create(<Info />);
     const instance = wrapper.root;
     const element = instance.findByType('h3');
     expect(element.props.children).toEqual('GitHub User Info');
   });
 
-  // ! чи рендериться те, що видає мок сервіса
-  it('mock axios returns mock data', async () => {
-    mockAxios.get.mockImplementationOnce(() =>
-      Promise.resolve({
-        data: {
-          login: 'bob',
-          id: '12345',
-          followers: '43',
-        },
-      })
-    );
-    const res = await getGitHubUser();
-    expect(res.data.login).toContain('bob');
+  it('component contains user prop', () => {
+    const tree = wrapper.toTree();
+    expect(tree.props.user).toEqual(userName);
   });
 
-  // ! data contains mock data object
-  // just static test
-  // it('render corectly', () => {
-  //   const wrapper = renderer.create(<Info user='yurkovskiy' />).root;
-  //   expect(wrapper.toJSON()).toMatchSnapshot();
-  // });
+  it('error is defined', () => {
+    const instance = wrapper.getInstance();
+    expect(instance.state.error).toBeDefined();
+  });
 
-  // ! fake axios return correct info
-  it('InfoComponent RENDERS all items from mock data correctly', async () => {
+  // mock axios
+  it('InfoComponent renders all items from mock data correctly', async () => {
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({
         data: {
