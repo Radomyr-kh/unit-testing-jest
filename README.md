@@ -1,4 +1,4 @@
-# Testing React apll with Jest
+# Testing React application with Jest
 
 # Application
 - The application is very simple which consist of only two components: **App** component, **Info** component and one service module named **DataService**
